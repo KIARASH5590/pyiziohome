@@ -147,20 +147,25 @@ export default function Hero() {
 
         @media (max-width: 768px) {
           .hero-title {
-            font-size: 1.75rem; /* Smaller font on mobile */
+            font-size: 1.75rem; 
           }
           .hero-subtitle {
              font-size: 1rem;
           }
           .btn-lg {
-            width: 100%; /* Full width buttons on mobile */
-            margin-bottom: 8px;
+            /* Compact buttons on mobile */
+            padding: 10px 16px;
+            font-size: 0.95rem;
+            width: auto;
+            flex: 1; /* Share width equally */
+            white-space: nowrap;
           }
           .hero-actions {
-              flex-direction: column;
+              flex-direction: row; /* Side by side */
+              gap: 12px;
           }
           .image-frame {
-              min-height: 250px; /* Smaller image on mobile */
+              min-height: 250px; 
           }
         }
 
