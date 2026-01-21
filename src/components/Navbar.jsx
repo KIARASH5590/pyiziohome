@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
   const { t, i18n } = useTranslation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'en' ? 'tr' : 'en';
     i18n.changeLanguage(newLang);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -21,22 +26,51 @@ export default function Navbar() {
           <span className="logo-text">Physio<span className="logo-highlight">Home</span></span>
         </div>
 
-        {/* Navigation Links */}
-        <nav className="nav-links">
+        {/* Desktop Navigation */}
+        <nav className="nav-links desktop-only">
           <a href="#how-it-works">{t('navbar.howItWorks')}</a>
           <a href="#therapists">{t('navbar.forTherapists')}</a>
           <a href="#about">{t('navbar.about')}</a>
         </nav>
 
-        {/* Actions */}
+        {/* Actions (Desktop + Mobile Toggle) */}
         <div className="nav-actions">
           <button className="lang-btn" onClick={toggleLanguage}>
             {i18n.language === 'en' ? 'TR' : 'EN'}
           </button>
-          <a href="#login" className="login-link">{t('navbar.login')}</a>
-          <button className="btn btn-primary">{t('navbar.signup')}</button>
+
+          <div className="desktop-only action-buttons">
+            <a href="#login" className="login-link">{t('navbar.login')}</a>
+            <button className="btn btn-primary">{t('navbar.signup')}</button>
+          </div>
+
+          {/* Hamburger Menu Button */}
+          <button className="hamburger-btn" onClick={toggleMobileMenu}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              {isMobileMenuOpen ? (
+                <path d="M18 6L6 18M6 6l12 12" />
+              ) : (
+                <path d="M3 12h18M3 6h18M3 18h18" />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="mobile-menu">
+          <nav className="mobile-nav-links">
+            <a href="#how-it-works" onClick={toggleMobileMenu}>{t('navbar.howItWorks')}</a>
+            <a href="#therapists" onClick={toggleMobileMenu}>{t('navbar.forTherapists')}</a>
+            <a href="#about" onClick={toggleMobileMenu}>{t('navbar.about')}</a>
+          </nav>
+          <div className="mobile-actions">
+            <a href="#login" className="login-link" onClick={toggleMobileMenu}>{t('navbar.login')}</a>
+            <button className="btn btn-primary btn-full">{t('navbar.signup')}</button>
+          </div>
+        </div>
+      )}
 
       <style>{`
         .navbar {
@@ -68,8 +102,9 @@ export default function Navbar() {
         .logo-highlight {
           color: var(--primary);
         }
-
-        .nav-links {
+        
+        /* Desktop Only Utility */
+        .desktop-only {
           display: none;
         }
 
@@ -87,7 +122,13 @@ export default function Navbar() {
         .nav-actions {
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 16px;
+        }
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .login-link {
@@ -112,9 +153,78 @@ export default function Navbar() {
           color: var(--primary);
         }
 
-        @media (min-width: 768px) {
-          .nav-links {
+        /* Hamburger */
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            padding: 4px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid #eee;
+            box-shadow: var(--shadow-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .mobile-nav-links a {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            padding: 8px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .mobile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .btn-full {
+            width: 100%;
+        }
+
+        @media (min-width: 900px) {
+          .desktop-only {
             display: block;
+          }
+          
+          .desktop-only.action-buttons {
+              display: flex;
+          }
+          
+          .hamburger-btn {
+              display: none;
+          }
+          
+          .mobile-menu {
+              display: none;
           }
         }
       `}</style>
