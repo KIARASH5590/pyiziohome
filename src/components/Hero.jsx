@@ -145,6 +145,25 @@ export default function Hero() {
             line-height: 0;
         }
 
+        @media (max-width: 768px) {
+          .hero-title {
+            font-size: 1.75rem; /* Smaller font on mobile */
+          }
+          .hero-subtitle {
+             font-size: 1rem;
+          }
+          .btn-lg {
+            width: 100%; /* Full width buttons on mobile */
+            margin-bottom: 8px;
+          }
+          .hero-actions {
+              flex-direction: column;
+          }
+          .image-frame {
+              min-height: 250px; /* Smaller image on mobile */
+          }
+        }
+
         @media (min-width: 992px) {
           .hero-container {
             grid-template-columns: 1fr 1fr;

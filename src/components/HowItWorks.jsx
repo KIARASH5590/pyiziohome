@@ -147,6 +147,12 @@ export default function HowItWorks() {
           margin: 0 auto;
         }
 
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+
         @media (min-width: 768px) {
           .steps-grid {
             grid-template-columns: repeat(3, 1fr);

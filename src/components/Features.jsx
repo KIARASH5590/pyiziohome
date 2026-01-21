@@ -110,6 +110,12 @@ export default function Features() {
           line-height: 1.5;
         }
 
+        @media (max-width: 768px) {
+            .features-section {
+                padding: 40px 0;
+            }
+        }
+
         @media (min-width: 768px) {
           .features-grid {
             grid-template-columns: repeat(3, 1fr);
