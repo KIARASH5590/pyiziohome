@@ -210,6 +210,11 @@ export default function Navbar() {
             width: 100%;
         }
 
+        /* Utility Helpers */
+        .desktop-only {
+          display: none;
+        }
+
         @media (min-width: 900px) {
           .desktop-only {
             display: block;
@@ -217,6 +222,8 @@ export default function Navbar() {
           
           .desktop-only.action-buttons {
               display: flex;
+              align-items: center;
+              gap: 20px;
           }
           
           .hamburger-btn {

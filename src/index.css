@@ -2,21 +2,24 @@
 
 :root {
   /* Colors extracted from the design */
-  --primary: #4CAF50; /* Green for main CTAs */
+  --primary: #4CAF50;
+  /* Green for main CTAs */
   --primary-dark: #388E3C;
-  --secondary: #274059; /* Slate/Blue for Text Headings */
-  --accent: #2563EB; /* Bright Blue for links or minor accents */
-  
+  --secondary: #274059;
+  /* Slate/Blue for Text Headings */
+  --accent: #2563EB;
+  /* Bright Blue for links or minor accents */
+
   --text-main: #1F2937;
   --text-muted: #6B7280;
-  
+
   --bg-page: #FFFFFF;
   --bg-off-white: #F8FAFC;
-  
+
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  
+
   --radius: 8px;
 }
 
@@ -32,9 +35,15 @@ body {
   background-color: var(--bg-page);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--secondary);
   font-weight: 700;
   line-height: 1.2;
@@ -70,6 +79,7 @@ a {
   background-color: var(--primary);
   color: white;
 }
+
 .btn-primary:hover {
   background-color: var(--primary-dark);
   transform: translateY(-1px);
@@ -81,6 +91,7 @@ a {
   border: 1px solid #D1D5DB;
   color: var(--text-main);
 }
+
 .btn-outline:hover {
   border-color: var(--primary);
   color: var(--primary);
