@@ -59,26 +59,32 @@ export default function Hero() {
       </div>
 
       <style>{`
+        /* --- Mobile First Hero Styles --- */
         .hero {
           position: relative;
-          padding: 80px 0 140px; 
+          padding: 60px 0 100px; 
           background: linear-gradient(to right, #ffffff, #F0FDF4);
           overflow: hidden;
         }
 
         .hero-container {
-          display: grid;
-          grid-template-columns: 1fr;
+          display: flex;
+          flex-direction: column;
           gap: 40px;
-          align-items: center;
+        }
+
+        /* Content */
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .hero-title {
-          /* font-size handled by h1 global or specific override if needed larger for hero */
-          font-size: clamp(2rem, 5vw, 3.5rem); /* Fluid typography for Hero Title */
-          margin-bottom: 24px;
+          /* Uses base h1 size from index.css, no override needed unless specific */
           color: var(--secondary);
-          line-height: 1.1;
+          line-height: 1.15;
+          margin-bottom: 8px;
         }
         
         .hero-title .text-secondary {
@@ -86,39 +92,39 @@ export default function Hero() {
         }
 
         .hero-subtitle {
-          font-size: 1.125rem;
+          font-size: 1rem;
           color: var(--text-muted);
-          margin-bottom: 32px;
-          max-width: 540px;
+          margin-bottom: 24px;
         }
 
+        /* Actions - Mobile: Full width buttons or side-by-side flex */
         .hero-actions {
           display: flex;
-          gap: 16px;
+          gap: 12px;
         }
         
         .btn-lg {
-            padding: 14px 32px;
-            font-size: 1.1rem;
+            padding: 12px 24px;
+            font-size: 1rem;
+            flex: 1; /* Equal width on mobile */
+            white-space: nowrap;
         }
 
+        /* Image Area */
         .hero-image-wrapper {
           position: relative;
+          width: 100%;
           display: flex;
           justify-content: center;
-          height: 100%;
-          min-height: 400px;
         }
         
         .image-frame {
             position: relative;
             width: 100%;
-            height: 100%;
+            height: 300px; /* specific height for mobile */
             border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
-            aspect-ratio: 4/3; 
-            max-height: 500px;
         }
 
         .hero-img {
@@ -145,39 +151,43 @@ export default function Hero() {
             line-height: 0;
         }
 
-        @media (max-width: 768px) {
-          /* Title size handled by clamp above */
-          .hero-subtitle {
-             font-size: 1rem;
-          }
-          .btn-lg {
-            /* Compact buttons on mobile */
-            padding: 10px 16px;
-            font-size: 0.95rem;
-            width: auto;
-            flex: 1; /* Share width equally */
-            white-space: nowrap;
-          }
-          .hero-actions {
-              flex-direction: row; /* Side by side */
-              gap: 12px;
-          }
-          .image-frame {
-              min-height: 250px; 
-          }
-        }
-
+        /* --- Desktop Scaling (min-width: 992px) --- */
         @media (min-width: 992px) {
-          .hero-container {
-            grid-template-columns: 1fr 1fr;
-          }
-          
           .hero {
-            padding: 100px 0 180px;
+             padding: 100px 0 160px;
+          }
+
+          .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
           }
           
           .hero-title {
-            font-size: 3.5rem;
+              /* Scaling up strictly for desktop hero */
+              font-size: 3.5rem; 
+          }
+          
+          .hero-subtitle {
+              font-size: 1.125rem;
+              max-width: 540px;
+          }
+
+          .btn-lg {
+             flex: initial; /* Auto width on desktop */
+             width: auto;
+             padding: 14px 32px;
+             font-size: 1.1rem;
+          }
+
+          .hero-image-wrapper {
+              height: 100%;
+          }
+          
+          .image-frame {
+              height: 100%;
+              min-height: 500px;
+              aspect-ratio: 4/3;
           }
         }
       `}</style>
