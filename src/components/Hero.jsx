@@ -74,7 +74,8 @@ export default function Hero() {
         }
 
         .hero-title {
-          font-size: 2.5rem;
+          /* font-size handled by h1 global or specific override if needed larger for hero */
+          font-size: clamp(2rem, 5vw, 3.5rem); /* Fluid typography for Hero Title */
           margin-bottom: 24px;
           color: var(--secondary);
           line-height: 1.1;
@@ -145,9 +146,7 @@ export default function Hero() {
         }
 
         @media (max-width: 768px) {
-          .hero-title {
-            font-size: 1.75rem; 
-          }
+          /* Title size handled by clamp above */
           .hero-subtitle {
              font-size: 1rem;
           }

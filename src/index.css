@@ -47,6 +47,37 @@ h6 {
   color: var(--secondary);
   font-weight: 700;
   line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.875rem;
+  }
+
+  /* 30px */
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  /* 24px */
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  /* 20px */
 }
 
 a {
@@ -73,6 +104,14 @@ a {
   border: none;
   transition: all 0.2s ease;
   font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  .btn {
+    padding: 0.625rem 1.25rem;
+    /* Slightly smaller padding */
+    font-size: 0.95rem;
+  }
 }
 
 .btn-primary {
