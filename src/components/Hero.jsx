@@ -34,7 +34,6 @@ export default function Hero() {
 
           <div className="hero-actions">
             <button className="btn btn-primary btn-lg">{t('hero.findTherapist')}</button>
-            <button className="btn btn-outline btn-lg">{t('hero.learnMore')}</button>
           </div>
         </div>
 
